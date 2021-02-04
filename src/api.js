@@ -12,7 +12,7 @@ const cors = require('cors');
 app.use('/.netlify/functions/api', route);
 
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect("mongodb+srv://PublicView:12345678910@cluster0.tox6k.mongodb.net/data?retryWrites=true&w=majority", {
 	useUnifiedTopology: true,
 	useNewUrlParser: true
 });
