@@ -4,13 +4,6 @@
 [dev]
   publish = "dist"
 
-# The following redirect is intended for use with most SPAs that handle
-# routing internally.
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
   for = "/*"

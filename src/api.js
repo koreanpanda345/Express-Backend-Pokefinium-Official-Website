@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGO_URI, {
 const corsOptions = 
 {
 	origin: "https://pokefinium.netlify.app",
-	allowedHeaders: ['Origin', 'X-Requested-with', 'Content-Type', 'Accept', 'Access-Control-Allow-Origin']
+	allowedHeaders: ['Origin', 'X-Requested-with', 'Content-Type', 'Accept', 'Access-Control-Allow-Origin'],
 };
 //Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin
 app.use(cors(corsOptions));
