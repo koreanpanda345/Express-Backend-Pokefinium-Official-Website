@@ -4,12 +4,8 @@
 [dev]
   publish = "dist"
 
-[[redirects]]
-  for="/*"
-  to="/.netlify/functions/api"
-
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
-  for = "/*"
+  for = "/.netlify/functions/api/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
