@@ -44,7 +44,5 @@ route.get('/staff', async (req, res) =>
 	if(!staff) return res.status(500).send({msg: 'Something happened to the database'});
 	return res.send(staff);
 });
-
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../indexl.html')))
 module.exports = app;
 module.exports.handler = serverless(app);
