@@ -4,7 +4,7 @@
   "description": "The backend for Pokefinium's Official Website",
   "main": "src/index.js",
   "scripts": {
-    "build": "netlify-lambda build express",
+    "build": "npx netlify-lambda build express",
     "start": "npx nodemon server-local.js"
   },
   "author": "Cody Spratford",
