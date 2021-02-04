@@ -7,6 +7,7 @@ const route = express.Router();
 const mongoose = require('mongoose');
 const StaffSchema = require('./database/schemas/StaffSchema');
 const DraftSchema = require('./database/schemas/DraftSchema');
+const { schema } = require('./database/schemas/StaffSchema');
 
 app.use('/.netlify/functions/api', route);
 
@@ -25,33 +26,15 @@ route.get('/', (req, res) =>
 		res.json(staff);
 });
 
-route.get('/draft/:season/:id', async (req, res) =>
+route.get('/staff', (req, res) =>
 {
-	const draft = await DraftSchema.findOne({season: req.params.season, searchId: req.params.id});
-	if(!draft) return res.status(404).send({msg: 'Draft was not found. Please check that you have the correct search id, and season.'});
-	return res.send(draft);
-});
-
-route.get('/draft/:season', async (req, res) => {
-	const drafts = await DraftSchema.find({season: req.params.season});
-	if(!drafts) return res.status(404).send({msg: "Couldn't find any drafts for this season."});
-	return res.send(drafts);
-});
-
-route.get('/draft', async (req, res) =>
-{
-	const drafts = await DraftSchema.find();
-	if(!drafts) return res.status(500).send({msg: "Something happend to the database"});
-	return res.send(drafts);
-});
-
-
-route.get('/staff', async (req, res) =>
-{
-	const staff = await StaffSchema.find();
-	console.log(staff);
-	if(!staff) return res.status(500).send({msg: 'Something happened to the database'});
+	const staff = StaffSchema.find().then(({data}) =>
+	{
+		console.log(data);
+		return data;
+	}).catch((error) => console.error(error));
 	return res.send(staff);
 });
+
 module.exports = app;
 module.exports.handler = serverless(app);
