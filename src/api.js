@@ -23,7 +23,7 @@ route.get('/', (req, res) =>
 });
 
 app.use(cors({
-	origin: ["http://localhost:3000", "https://pokefinium.netlify.app"],
+	origin: ["https://pokefinium.netlify.app"],
 	credentials: true
 }));
 
