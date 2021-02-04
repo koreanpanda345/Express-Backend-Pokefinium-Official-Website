@@ -23,8 +23,7 @@ route.get('/', (req, res) =>
 });
 
 app.use(cors({
-	origin: ["https://pokefinium.netlify.app"],
-	credentials: true
+	origin: ["https://pokefinium.netlify.app"]
 }));
 
 route.get('/staff', (req, res) =>
