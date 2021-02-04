@@ -21,10 +21,13 @@ route.get('/', (req, res) =>
 {
 	res.send("Endpoints are:\n/staff\n/draft\n/draft/:season\n/draft/:season/:id");
 });
+const corsOptions = 
+{
+	origin: "https://pokefinium.netlify.app"
+};
+app.use(cors(corsOptions));
 
-app.use(cors());
-
-route.get('/staff', (req, res) =>
+route.get('/staff',cors(corsOptions), (req, res) =>
 {
 	StaffSchema.find({}, (error, staff) =>
 	{
@@ -33,7 +36,7 @@ route.get('/staff', (req, res) =>
 	});
 });
 
-route.get('/draft', (req, res) =>
+route.get('/draft', cors(corsOptions), (req, res) =>
 {
 	DraftSchema.find({}, (error, drafts) =>
 	{
@@ -42,7 +45,7 @@ route.get('/draft', (req, res) =>
 	});
 })
 
-route.get('/draft/:season', (req, res) =>
+route.get('/draft/:season', cors(corsOptions), (req, res) =>
 {
 	DraftSchema.find({season: req.params.season}, (error, drafts) =>
 	{
@@ -51,7 +54,7 @@ route.get('/draft/:season', (req, res) =>
 	});
 });
 
-route.get('/draft/:season/:id', (req, res) =>
+route.get('/draft/:season/:id', cors(corsOptions), (req, res) =>
 {
 	DraftSchema.findOne({season: req.params.season, searchId: req.params.id}, (error, draft) =>
 	{
