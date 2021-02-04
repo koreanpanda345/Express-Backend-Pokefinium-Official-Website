@@ -6,6 +6,11 @@
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
-  for = "/.netlify/functions/api/*"
+  for = "/.netlify/functions/api/staff/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/.netlify/functions/api/draft/*"
+  [headers.values]
+  Access-Control-Allow-Origin = "*"
