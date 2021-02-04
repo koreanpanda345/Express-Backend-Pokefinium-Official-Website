@@ -22,9 +22,7 @@ route.get('/', (req, res) =>
 	res.send("Endpoints are:\n/staff\n/draft\n/draft/:season\n/draft/:season/:id");
 });
 
-app.use(cors({
-	origin: ["https://pokefinium.netlify.app"]
-}));
+app.use(cors());
 
 route.get('/staff', (req, res) =>
 {
