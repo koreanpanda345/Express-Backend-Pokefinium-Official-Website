@@ -17,15 +17,18 @@ mongoose.connect(process.env.MONGO_URI, {
 	useNewUrlParser: true
 });
 
-route.get('/', (req, res) =>
+const corsOptions = 
+{
+	origin: "https://pokefinium.netlify.app",
+	allowedHeaders: ['Origin', 'X-Requested-with', 'Content-Type', 'Accept', 'Access-Control-Allow-Origin']
+};
+//Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin
+app.use(cors(corsOptions));
+route.get('/', cors(corsOptions), (req, res) =>
 {
 	res.send("Endpoints are:\n/staff\n/draft\n/draft/:season\n/draft/:season/:id");
 });
-const corsOptions = 
-{
-	origin: "https://pokefinium.netlify.app"
-};
-app.use(cors(corsOptions));
+
 
 route.get('/staff',cors(corsOptions), (req, res) =>
 {
