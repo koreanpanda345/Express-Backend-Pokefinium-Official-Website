@@ -16,6 +16,15 @@ mongoose.connect(process.env.MONGO_URI, {
 	useNewUrlParser: true
 });
 
+route.get('/', (req, res) =>
+{
+	const staff = StaffSchema.find().then(({data}) =>
+		{
+			return data;
+		}).catch((error) => console.error(error));
+		res.json(staff);
+});
+
 route.get('/draft/:season/:id', async (req, res) =>
 {
 	const draft = await DraftSchema.findOne({season: req.params.season, searchId: req.params.id});
