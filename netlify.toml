@@ -7,11 +7,10 @@
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
   for = "/.netlify/functions/api/staff"
-    [headers.values]
+  [headers.values]
     Access-Control-Allow-Origin = "*"
 
 [[headers]]
-  for = "/.netlify/functions/api/draft/:season"
+  for = "/.netlify/functions/api/draft"
   [headers.values]
-  Access-Control-Allow-Origin = "*"
-  Access-Control-Allow-Credentials = ""
+  	Access-Control-Allow-Origin = "*"
