@@ -57,14 +57,14 @@ route.get('/draft/:season', cors(corsOptions), (req, res) =>
 	});
 });
 
-route.get('/draft/:season/:id', cors(corsOptions), (req, res) =>
-{
-	DraftSchema.findOne({season: req.params.season, searchId: req.params.id}, (error, draft) =>
-	{
-		if(error) return res.status(404).send({msg: "Couldn't find a draft under that query. Please check that you have the correct season, and search id."});
-		return res.json(draft);
-	})
-});
+// route.get('/draft/:season/:id', cors(corsOptions), (req, res) =>
+// {
+// 	DraftSchema.findOne({season: req.params.season, searchId: req.params.id}, (error, draft) =>
+// 	{
+// 		if(error) return res.status(404).send({msg: "Couldn't find a draft under that query. Please check that you have the correct season, and search id."});
+// 		return res.json(draft);
+// 	})
+// });
 
 module.exports = app;
 module.exports.handler = serverless(app);
